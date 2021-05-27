@@ -17,7 +17,8 @@ def create_app():
     from . import models # migrate 객체가 models.py 파일 참조
 
     # 블루프린트
-    from .views import main_views
+    from .views import main_views, question_views
     app.register_blueprint(main_views.bp) # 블루프린트 객체 bp 등록
+    app.register_blueprint(question_views.bp)
 
     return app
