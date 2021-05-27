@@ -30,6 +30,14 @@
     </div>
     {% endfor %}
     <form action="{{ url_for('answer.create', question_id=question.id) }}" method="post" class="my-3">
+        {{ form.csrf_token }}
+        <!-- 오류 표시 start -->
+        {% for field, errors in form.errors.items() %} <!-- form.errors.items의 field -> 입력폼 -->
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ form[field].label }}</strong>: {{ ','.join(errors) }}
+            </div>
+        {% endfor %}
+        <!-- 오류 표시 end -->
         <div class="form-group">
             <textarea class="form-control" name="content" id="content" rows="10"></textarea>
         </div>
